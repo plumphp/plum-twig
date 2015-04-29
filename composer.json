@@ -8,8 +8,8 @@
   }],
   "license": "MIT",
   "require": {
-    "plumphp/plum": "dev-master@dev",
-    "cocur/vale":   "dev-master@dev",
+    "plumphp/plum": "~0.2",
+    "cocur/vale":   "~0.2",
     "twig/twig":    "~1.9"
   },
   "require-dev": {

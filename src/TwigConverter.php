@@ -26,14 +26,9 @@ class TwigConverter implements ConverterInterface
     protected $defaultTemplate;
 
     /**
-     * @var array|string|int|null
+     * @var array
      */
-    protected $templateProperty;
-
-    /**
-     * @var array|string|int|null
-     */
-    protected $targetProperty;
+    protected $properties = [];
 
     /**
      * @var string
@@ -43,19 +38,12 @@ class TwigConverter implements ConverterInterface
     /**
      * @param Twig_Environment      $twig
      * @param string                $defaultTemplate
-     * @param array|string|int|null $templateProperty
-     * @param array|string|int|null $targetProperty
+     * @param array                 $properties
      */
-    public function __construct(
-        Twig_Environment $twig,
-        $defaultTemplate,
-        $templateProperty = null,
-        $targetProperty = null
-    ) {
+    public function __construct(Twig_Environment $twig, $defaultTemplate, array $properties = []) {
         $this->twig             = $twig;
         $this->defaultTemplate  = $defaultTemplate;
-        $this->templateProperty = $templateProperty;
-        $this->targetProperty   = $targetProperty;
+        $this->properties       = $properties;
     }
 
     /**
@@ -77,15 +65,44 @@ class TwigConverter implements ConverterInterface
      */
     public function convert($item)
     {
-        if (!$this->templateProperty || !$file = Vale::get($item, $this->templateProperty)) {
-            $file = $this->defaultTemplate;
-        }
+        $file     = $this->getFile($item);
         $template = $this->twig->loadTemplate($file.$this->fileExtension);
-        $rendered = $template->render($item);
+        $rendered = $template->render($this->getContext($item));
 
-        if (!$this->targetProperty) {
+        if (empty($this->properties['target'])) {
             return $rendered;
         }
-        return Vale::set($item, $this->targetProperty, $rendered);
+        return Vale::set($item, $this->properties['target'], $rendered);
+    }
+
+    /**
+     * @param mixed $item
+     *
+     * @return array
+     */
+    protected function getContext($item)
+    {
+        if (empty($this->properties['context']) || !$context = Vale::get($item, $this->properties['context'])) {
+            $context = $item;
+        }
+        if (is_object($context) && method_exists($context, 'toArray')) {
+            $context = call_user_func([$context, 'toArray']);
+        }
+
+        return $context;
+    }
+
+    /**
+     * @param mixed $item
+     *
+     * @return string
+     */
+    protected function getFile($item)
+    {
+        if (empty($this->properties['template']) || !$file = Vale::get($item, $this->properties['template'])) {
+            $file = $this->defaultTemplate;
+        }
+
+        return $file;
     }
 }

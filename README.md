@@ -43,13 +43,13 @@ By default `.html.twig` is appended on the given template name. You can change t
 $converter->setFileExtension('.twig');
 ```
 
-Sometimes different items should be rendered using different templates. If you pass a `$templateProperty` to the
+Sometimes different items should be rendered using different templates. If you pass a template property to the
 constructor, the template name retrieved from the given item. Because `TwigConverter` uses
 [Vale](https://github.com/cocur/vale) to retrieve the value this works even if the item is a complex and nested
 structure.
 
 ```php
-$converter = new TwigConverter($twig, 'default', 'layout');
+$converter = new TwigConverter($twig, 'default', ['template' => 'layout']);
 
 // The template name.html.twig is used to render the item
 $converter->convert(['name' => 'Florian', 'layout' => 'name']);
@@ -57,15 +57,28 @@ $converter->convert(['name' => 'Florian', 'layout' => 'name']);
 
 We have seen that by default `TwigConverter` takes an arbitrary item (e.g., an array or object) and converts it into a
 string. In many cases the converter will be part of a bigger Plum workflow and you would like to keep the data in the
-item. You can pass a `$targetProperty` to the constructor and the rendered template will be stored in the item using
+item. You can pass a target property to the constructor and the rendered template will be stored in the item using
 Vale.
 
 ```php
-$converter = new TwigConverter($twig, 'layout', null, 'content');
+$converter = new TwigConverter($twig, 'layout', ['target' => 'content']);
 
 // The rendered template is added to the item with the key "content"
-$converter->convert(['name' => 'Florian'); // -> ['name' => 'Florian', 'content' => '...']
+$converter->convert(['name' => 'Florian']); // -> ['name' => 'Florian', 'content' => '...']
 ```
+
+Not every time the full item should be passed as context, but rather an element of the item. You can pass the
+context property to tell `TwigConverter` which field in the item should be used as context.
+
+```php
+$converter = new TwigConverter($twig, 'layout', ['context' => 'data']);
+
+// Only the ['name' => 'Florian'] is passed as context to Twig
+$converter->convert([['data' => ['name' => 'Florian'], 'file' => 'person']);
+```
+
+Whether the whole item or just part of it is used as context, Twig only allows arrays to be passed as context. Thus,
+`TwigConverter` checks if the context is an object and it will call its `toArray()` method (if it has one).
 
 
 Change Log

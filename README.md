@@ -84,7 +84,9 @@ Whether the whole item or just part of it is used as context, Twig only allows a
 Change Log
 ----------
 
-*No version released yet.*
+### Version 0.1 (17 May 2015)
+
+- Initial release
 
 
 Author

@@ -3,7 +3,7 @@
 
 > PlumTwig is a Twig converter for Plum. Plum is a data processing pipeline for PHP.
 
-[![Latest Version](https://packagist.org/packages/plumphp/plum-twig)](https://img.shields.io/packagist/v/plumphp/plum-twig.svg)
+[![Latest Version](https://img.shields.io/packagist/v/plumphp/plum-twig.svg)](https://packagist.org/packages/plumphp/plum-twig)
 [![Build Status](https://travis-ci.org/plumphp/plum-twig.svg)](https://travis-ci.org/plumphp/plum-twig)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/plumphp/plum-twig/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/plumphp/plum-twig/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/plumphp/plum-twig/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/plumphp/plum-twig/?branch=master)

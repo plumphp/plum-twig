@@ -1,7 +1,8 @@
-<img src="https://florian.ec/img/plum/logo.png" alt="Plum">
-====
+<h1 align="center">
+    <img src="http://cdn.florian.ec/plum-logo.svg" alt="Plum" width="300">
+</h1>
 
-> PlumTwig is a Twig converter for Plum. Plum is a data processing pipeline for PHP.
+> PlumTwig is a [Twig](http://twig.sensiolabs.org) converter for Plum. Plum is a data processing pipeline for PHP.
 
 [![Latest Version](https://img.shields.io/packagist/v/plumphp/plum-twig.svg)](https://packagist.org/packages/plumphp/plum-twig)
 [![Build Status](https://travis-ci.org/plumphp/plum-twig.svg)](https://travis-ci.org/plumphp/plum-twig)

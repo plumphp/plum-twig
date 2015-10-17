@@ -24,10 +24,13 @@ $ composer require plumphp/plum-twig
 Usage
 -----
 
-### TwigConverter
+Please refer to the [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more
+information about Plum in general.
 
-In its simplest form `TwigConverter` takes an item and returns a rendered template. The given item is passed to
-Twigs `render()` method as context. The following code renders the `hello.html.twig` template and passes 
+### `TwigConverter`
+
+In its simplest form `Plum\PlumTwig\TwigConverter` takes an item and returns a rendered template. The given item is
+passed to Twigs `render()` method as context. The following code renders the `hello.html.twig` template and passes
 `["name" => "Florian"]` as context to the template. The return value of `convert()` is the rendered template.
 
 ```php

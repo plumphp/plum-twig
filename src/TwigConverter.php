@@ -16,9 +16,8 @@ use Plum\Plum\Converter\ConverterInterface;
 use Cocur\Vale\Vale;
 
 /**
- * TwigConverter
+ * TwigConverter.
  *
- * @package   Plum\PlumTwig
  * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @copyright 2015 Florian Eckerstorfer
  */
@@ -45,11 +44,12 @@ class TwigConverter implements ConverterInterface
     protected $fileExtension = '.html.twig';
 
     /**
-     * @param Twig_Environment      $twig
-     * @param string                $defaultTemplate
-     * @param array                 $properties
+     * @param Twig_Environment $twig
+     * @param string           $defaultTemplate
+     * @param array            $properties
      */
-    public function __construct(Twig_Environment $twig, $defaultTemplate, array $properties = []) {
+    public function __construct(Twig_Environment $twig, $defaultTemplate, array $properties = [])
+    {
         $this->twig             = $twig;
         $this->defaultTemplate  = $defaultTemplate;
         $this->properties       = $properties;
@@ -81,6 +81,7 @@ class TwigConverter implements ConverterInterface
         if (empty($this->properties['target'])) {
             return $rendered;
         }
+
         return Vale::set($item, $this->properties['target'], $rendered);
     }
 

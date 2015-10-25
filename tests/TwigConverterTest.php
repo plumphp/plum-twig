@@ -16,9 +16,8 @@ use Twig_Environment;
 use Twig_Template;
 
 /**
- * TwigConverterTest
+ * TwigConverterTest.
  *
- * @package   Plum\PlumTwig
  * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @copyright 2015 Florian Eckerstorfer
  * @group     unit
@@ -34,7 +33,7 @@ class TwigConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function convertReturnsRenderedTemplateIfNoTargetPropertyIsProvided()
     {
-        $twig = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
+        $twig      = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
         $converter = new TwigConverter($twig, 'layout');
 
         $this->assertSame('<p>foo</p>', $converter->convert(['foo' => 'bar']));
@@ -51,7 +50,7 @@ class TwigConverterTest extends \PHPUnit_Framework_TestCase
     {
         $item = ['foo' => 'bar', 'layout' => 'my'];
 
-        $twig = $this->getMockTwig('my.html.twig', $this->getMockTemplate($item, '<p>foo</p>'));
+        $twig      = $this->getMockTwig('my.html.twig', $this->getMockTemplate($item, '<p>foo</p>'));
         $converter = new TwigConverter($twig, 'layout.html.twig', ['template' => 'layout']);
 
         $this->assertSame('<p>foo</p>', $converter->convert($item));
@@ -66,7 +65,7 @@ class TwigConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function convertSetsRenderedUsingTargetProperty()
     {
-        $twig = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
+        $twig      = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
         $converter = new TwigConverter($twig, 'layout', ['template' => 'layout', 'target' => 'content']);
 
         $this->assertSame('<p>foo</p>', $converter->convert(['foo' => 'bar'])['content']);
@@ -81,7 +80,7 @@ class TwigConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function convertRendersUsingTheGivenContext()
     {
-        $twig = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
+        $twig      = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
         $converter = new TwigConverter($twig, 'layout', ['context' => 'c']);
 
         $this->assertSame('<p>foo</p>', $converter->convert(['c' => ['foo' => 'bar']]));
@@ -97,7 +96,7 @@ class TwigConverterTest extends \PHPUnit_Framework_TestCase
     public function convertCallsToArrayIfContextIsObject()
     {
         require_once __DIR__.'/fixtures/ContextFixture.php';
-        $twig = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
+        $twig      = $this->getMockTwig('layout.html.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
         $converter = new TwigConverter($twig, 'layout', ['context' => 'c']);
 
         $this->assertSame('<p>foo</p>', $converter->convert(['c' => new ContextFixture()]));
@@ -112,7 +111,7 @@ class TwigConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function setFileExtensionChangesExtensionUsedInConvert()
     {
-        $twig = $this->getMockTwig('layout.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
+        $twig      = $this->getMockTwig('layout.twig', $this->getMockTemplate(['foo' => 'bar'], '<p>foo</p>'));
         $converter = new TwigConverter($twig, 'layout');
         $converter->setFileExtension('.twig');
 

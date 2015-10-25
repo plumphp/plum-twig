@@ -6,8 +6,10 @@
 
 [![Latest Version](https://img.shields.io/packagist/v/plumphp/plum-twig.svg)](https://packagist.org/packages/plumphp/plum-twig)
 [![Build Status](https://travis-ci.org/plumphp/plum-twig.svg)](https://travis-ci.org/plumphp/plum-twig)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/7d6vkj6qdcnoyprj?svg=true)](https://ci.appveyor.com/project/florianeckerstorfer/plum-twig)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/plumphp/plum-twig/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/plumphp/plum-twig/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/plumphp/plum-twig/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/plumphp/plum-twig/?branch=master)
+[![StyleCI](https://styleci.io/repos/32628269/shield)](https://styleci.io/repos/32628269)
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 

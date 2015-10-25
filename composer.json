@@ -1,15 +1,15 @@
 {
     "name":        "plumphp/plum-twig",
     "description": "PlumTwig is a Twig converter for Plum.",
-    "authors":     [
-        {
-            "name":     "Florian Eckerstorfer",
-            "email":    "florian@eckerstorfer.co",
-            "homepage": "https://florian.ec"
-        }
-    ],
+    "keywords":    ["plum", "twig", "import", "export"],
+    "authors":     [{
+        "name":     "Florian Eckerstorfer",
+        "email":    "florian@eckerstorfer.co",
+        "homepage": "https://florian.ec"
+    }],
     "license":     "MIT",
     "require":     {
+        "php":          ">=5.5",
         "plumphp/plum": "~0.2",
         "cocur/vale":   "~0.2",
         "twig/twig":    "~1.9"
